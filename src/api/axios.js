@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL:
-    "https://stackblitzstartersighuoe-w2ua--3800--ba0db7b1.local-credentialless.webcontainer.io",
+  baseURL: "https://mern-crud-auth-13nh-dev.fl0.io",
+  withCredentials: true,
 });
 export default instance;
