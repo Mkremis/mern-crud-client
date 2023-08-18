@@ -16,9 +16,11 @@ export const AuthProvider = ({ children }) => {
       setAuthErrors([]);
     } catch (error) {
       console.log(error);
-      setAuthErrors(error.response.data.error);
       setUser(null);
       setIsAuthenticated(false);
+      if (!Array.isArray(error.response.data.error))
+        return setAuthErrors([error.response.data.error]);
+      setAuthErrors(error.response.data.error);
     }
   };
 
@@ -30,9 +32,11 @@ export const AuthProvider = ({ children }) => {
       setAuthErrors([]);
     } catch (error) {
       console.log(error);
-      setAuthErrors(error.response.data.error);
       setUser(null);
       setIsAuthenticated(false);
+      if (!Array.isArray(error.response.data.error))
+        return setAuthErrors([error.response.data.error]);
+      setAuthErrors(error.response.data.error);
     }
   };
   useEffect(() => {
