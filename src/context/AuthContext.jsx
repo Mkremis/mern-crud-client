@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from 'react';
 import { loginRequest, registerRequest } from '../api/auth';
+import Cookies from 'js-cookie';
 
 export const AuthContext = createContext();
 
@@ -39,6 +40,7 @@ export const AuthProvider = ({ children }) => {
       setAuthErrors(error.response.data.error);
     }
   };
+
   useEffect(() => {
     if (authErrors.length > 0) {
       const timer = setTimeout(() => {
@@ -47,6 +49,11 @@ export const AuthProvider = ({ children }) => {
       return () => clearTimeout(timer);
     }
   }, [authErrors]);
+
+  useEffect(() => {
+    const cookies = Cookies.get();
+    console.log('cookies', cookies);
+  }, []);
 
   return (
     <AuthContext.Provider
