@@ -1,7 +1,7 @@
-import { useContext, useEffect } from "react";
-import { useForm } from "react-hook-form";
-import { AuthContext } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useContext, useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import { AuthContext } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const RegisterPage = () => {
   const {
@@ -13,7 +13,7 @@ const RegisterPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isAuthenticated) navigate("/");
+    if (isAuthenticated) navigate('/');
   }, [isAuthenticated]);
 
   const onSubmit = handleSubmit(async (values) => signup(values));
@@ -28,7 +28,7 @@ const RegisterPage = () => {
       <form onSubmit={onSubmit}>
         <input
           type="text"
-          {...register("username", { required: true })}
+          {...register('username', { required: true })}
           className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
           placeholder="username"
         />
@@ -37,16 +37,17 @@ const RegisterPage = () => {
         )}
         <input
           type="email"
-          {...register("email", { required: true })}
+          {...register('email', { required: true })}
           className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
           placeholder="email"
         />
         {errors.email && <p className="text-red-500">Email is required</p>}
         <input
           type="password"
-          {...register("password", { required: true })}
+          {...register('password', { required: true })}
           className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
           placeholder="password"
+          autoComplete="off"
         />
         {errors.password && (
           <p className="text-red-500">Password is required</p>
