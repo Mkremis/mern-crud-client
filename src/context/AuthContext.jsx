@@ -52,7 +52,7 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const cookies = Cookies.get();
-    console.log('cookies', cookies);
+    if (cookies?.token) console.log(cookies.token);
   }, []);
 
   return (
