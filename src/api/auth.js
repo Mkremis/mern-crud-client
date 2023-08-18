@@ -1,5 +1,7 @@
-import axios from 'axios';
+import axios from "axios";
 
-const API = 'https://mern-crud-auth-13nh-dev.fl0.io';
+const API = "https://mern-crud-auth-13nh-dev.fl0.io";
 
 export const registerRequest = (user) => axios.post(`${API}/register`, user);
+
+export const loginRequest = (user) => axios.post(`${API}/login`, user);
