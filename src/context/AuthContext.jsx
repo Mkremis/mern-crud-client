@@ -1,5 +1,5 @@
-import { createContext, useEffect, useState } from "react";
-import { loginRequest, registerRequest } from "../api/auth";
+import { createContext, useEffect, useState } from 'react';
+import { loginRequest, registerRequest } from '../api/auth';
 
 export const AuthContext = createContext();
 
@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const login = async (user) => {
+  const signin = async (user) => {
     try {
       const res = await loginRequest(user);
       setUser(res?.data);
@@ -35,9 +35,18 @@ export const AuthProvider = ({ children }) => {
       setIsAuthenticated(false);
     }
   };
+  useEffect(() => {
+    if (authErrors.length > 0) {
+      const timer = setTimeout(() => {
+        setAuthErrors([]);
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [authErrors]);
+
   return (
     <AuthContext.Provider
-      value={{ signup, login, user, isAuthenticated, authErrors }}
+      value={{ signup, signin, user, isAuthenticated, authErrors }}
     >
       {children}
     </AuthContext.Provider>
