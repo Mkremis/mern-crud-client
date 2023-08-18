@@ -6,6 +6,7 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [errors, setErrors] = useState(null);
 
   const signup = async (user) => {
     try {
@@ -13,9 +14,9 @@ export const AuthProvider = ({ children }) => {
       setUser(res?.data);
       setIsAuthenticated(true);
     } catch (error) {
-      console.log(error);
+      setErrors(error.response.data.error);
       setUser(null);
-      isAuthenticated(false);
+      setIsAuthenticated(false);
     }
   };
 
