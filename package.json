@@ -2,6 +2,7 @@
   "name": "vite-react-starter",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://mkremis.github.io/mern-crud-client/",
   "type": "module",
   "scripts": {
     "dev": "vite",
